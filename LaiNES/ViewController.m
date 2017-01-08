@@ -22,6 +22,7 @@
 @property (readwrite) CGFloat width;
 @property (readwrite) CGFloat height;
 @property (readwrite) UIView* headerView;
+@property (readwrite) UIButton* menuButton;
 @property (readwrite) UIView* gameFrame;
 @property (readwrite) NESView* nesView;
 @property (readwrite) PADView* padView;
@@ -65,15 +66,15 @@ static void* tick_executor(void* args) {
     _pref = [NSUserDefaults standardUserDefaults];
     _width = [UIScreen mainScreen].bounds.size.width;
     _height = [UIScreen mainScreen].bounds.size.height;
+    if (_height < _width) {
+        CGFloat w = _width;
+        _width = _height;
+        _height = w;
+    }
     [self.view setBackgroundColor:[UIColor colorWithRed:0.1875f green:0.246f blue:0.625f alpha:1.0f]];
 
     _headerView = [[UIView alloc] initWithFrame:CGRectMake(0,20,_width,BUTTON_SIZE+MARGIN*2)];
     [_headerView setBackgroundColor:[UIColor colorWithRed:0.1875f green:0.246f blue:0.825f alpha:1.0f]];
-    UIButton* menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [menuButton setImage:[UIImage imageNamed:@"ic_menu_white_24dp.png"] forState:UIControlStateNormal];
-    [menuButton setFrame:CGRectMake(_width-BUTTON_SIZE-MARGIN, MARGIN, BUTTON_SIZE, BUTTON_SIZE)];
-    [menuButton addTarget:self action:@selector(openMenu) forControlEvents:UIControlEventTouchDown];
-    [_headerView addSubview:menuButton];
     UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MARGIN, MARGIN, _width - BUTTON_SIZE - MARGIN*4, BUTTON_SIZE)];
     [titleLabel setTextColor:[UIColor whiteColor]];
     [titleLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
@@ -83,15 +84,8 @@ static void* tick_executor(void* args) {
 
     _gameFrame = [[UIView alloc] initWithFrame:CGRectMake(0, 20 + BUTTON_SIZE + MARGIN * 2, _width, _width / 4 * 3)];
     [_gameFrame setBackgroundColor:[UIColor blackColor]];
-    {
-        CGFloat x, y, width, height;
-        height = _gameFrame.frame.size.height;
-        width = height / 15.0f * 16.0f;
-        x = (_gameFrame.frame.size.width - width) / 2;
-        y = 0;
-        _nesView = [[NESView alloc] initWithFrame:CGRectMake(x, y, width, height)];
-        [_gameFrame addSubview:_nesView];
-    }
+    _nesView = [[NESView alloc] init];
+    [_gameFrame addSubview:_nesView];
     [self.view addSubview:_gameFrame];
 
     {
@@ -99,7 +93,13 @@ static void* tick_executor(void* args) {
         _padView = [[PADView alloc] initWithFrame:CGRectMake(0, y, _width, _height - y)];
     }
     [self.view addSubview:_padView];
-    
+   
+    _menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_menuButton setImage:[UIImage imageNamed:@"ic_menu_white_24dp.png"] forState:UIControlStateNormal];
+    [_menuButton setFrame:CGRectMake(_width-BUTTON_SIZE-MARGIN, MARGIN+_headerView.frame.origin.y, BUTTON_SIZE, BUTTON_SIZE)];
+    [_menuButton addTarget:self action:@selector(openMenu) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:_menuButton];
+
     _menuOutView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _width, _height)];
     [_menuOutView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenu)]];
     [self.view addSubview:_menuOutView];
@@ -115,8 +115,56 @@ static void* tick_executor(void* args) {
     [loadRomButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [loadRomButton addTarget:self action:@selector(loadRom) forControlEvents:UIControlEventTouchDown];
     [_menuView addSubview:loadRomButton];
+    [self setupLayout];
 
     [self startTickExecutor];
+}
+
+-(void)setupNESViewLayout:(CGFloat)frameWidth height:(CGFloat)frameHeight {
+    NSLog(@"FRAME: w=%d, h=%d", (int)frameWidth, (int)frameHeight);
+    CGFloat x, y, width, height;
+    height = frameHeight;
+    width = height / 15.0f * 16.0f;
+    x = (frameWidth - width) / 2;
+    y = 0;
+    _nesView.frame = CGRectMake(x, y, width, height);
+    NSLog(@"NES-VIEW: x=%d, y=%d, w=%d, h=%d", (int)x, (int)y, (int)width, (int)height);
+}
+
+-(void)setupLayout {
+    CGFloat deviceWidth, deviceHeight;
+    CGRect scsize = [[UIScreen mainScreen] bounds];
+    BOOL is8 = [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0;
+    if (is8)  {
+        deviceWidth = scsize.size.width;
+        deviceHeight = scsize.size.height;
+    } else {
+        deviceWidth = scsize.size.height;
+        deviceHeight = scsize.size.width;
+    }
+    if (deviceHeight < deviceWidth) {
+        // landscape
+        [_headerView setHidden:YES];
+        [_padView setHidden:YES];
+        _menuButton.frame = CGRectMake(deviceWidth-BUTTON_SIZE-MARGIN, MARGIN, BUTTON_SIZE, BUTTON_SIZE);
+        _gameFrame.frame = CGRectMake(0, 0, deviceWidth, deviceHeight);
+    } else {
+        // portrait
+        [_headerView setHidden:NO];
+        [_padView setHidden:NO];
+        _menuButton.frame = CGRectMake(deviceWidth-BUTTON_SIZE-MARGIN, MARGIN+_headerView.frame.origin.y, BUTTON_SIZE, BUTTON_SIZE);
+        _gameFrame.frame = CGRectMake(0, 20 + BUTTON_SIZE + MARGIN * 2, deviceWidth, deviceWidth / 4 * 3);
+    }
+    _menuOutView.frame = CGRectMake(0, 0, deviceWidth, deviceHeight);
+    if (is8) {
+        [self setupNESViewLayout:_gameFrame.frame.size.width height:_gameFrame.frame.size.height];
+    } else {
+        [self setupNESViewLayout:_gameFrame.frame.size.height height:_gameFrame.frame.size.width];
+    }
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
+    [self setupLayout];
 }
 
 - (void)openMenu {
