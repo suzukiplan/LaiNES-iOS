@@ -18,6 +18,7 @@
 #define MENU_WIDTH 240
 
 @interface ViewController ()
+@property (readwrite) NSUserDefaults* pref;
 @property (readwrite) CGFloat width;
 @property (readwrite) CGFloat height;
 @property (readwrite) UIView* headerView;
@@ -61,6 +62,7 @@ static void* tick_executor(void* args) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _pref = [NSUserDefaults standardUserDefaults];
     _width = [UIScreen mainScreen].bounds.size.width;
     _height = [UIScreen mainScreen].bounds.size.height;
     [self.view setBackgroundColor:[UIColor colorWithRed:0.1875f green:0.246f blue:0.625f alpha:1.0f]];
@@ -146,11 +148,15 @@ static void* tick_executor(void* args) {
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         textField.borderStyle = UITextBorderStyleRoundedRect;
         textField.textContentType = UITextContentTypeURL;
-        textField.text = @"http://0.0.0.0:1234/sample.nes";
+        textField.text = [_pref stringForKey:@"romUrl"];
+        if (!textField.text || [textField.text isEqualToString:@""]) {
+            textField.text = @"http://0.0.0.0:1234/sample.nes";
+        }
     }];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self loadRomWithURL:[NSURL URLWithString:alertController.textFields[0].text]];
-        
+        NSString* url = alertController.textFields[0].text;
+        [_pref setObject:url forKey:@"romUrl"];
+        [self loadRomWithURL:[NSURL URLWithString:url]];
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
     }]];
