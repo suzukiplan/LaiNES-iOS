@@ -120,6 +120,10 @@ static void* tick_executor(void* args) {
     [self startTickExecutor];
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 -(void)setupNESViewLayout:(CGFloat)frameWidth height:(CGFloat)frameHeight {
     NSLog(@"FRAME: w=%d, h=%d", (int)frameWidth, (int)frameHeight);
     CGFloat x, y, width, height;
