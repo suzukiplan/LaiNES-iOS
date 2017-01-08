@@ -7,15 +7,70 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		748459491E222FA100E34BCF /* button_a_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459381E222FA100E34BCF /* button_a_off.png */; };
+		7484594A1E222FA100E34BCF /* button_a_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459391E222FA100E34BCF /* button_a_on.png */; };
+		7484594B1E222FA100E34BCF /* button_b_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 7484593A1E222FA100E34BCF /* button_b_off.png */; };
+		7484594C1E222FA100E34BCF /* button_b_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 7484593B1E222FA100E34BCF /* button_b_on.png */; };
+		7484594D1E222FA100E34BCF /* button_select_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 7484593C1E222FA100E34BCF /* button_select_off.png */; };
+		7484594E1E222FA100E34BCF /* button_select_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 7484593D1E222FA100E34BCF /* button_select_on.png */; };
+		7484594F1E222FA100E34BCF /* button_start_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 7484593E1E222FA100E34BCF /* button_start_off.png */; };
+		748459501E222FA100E34BCF /* button_start_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 7484593F1E222FA100E34BCF /* button_start_on.png */; };
+		748459511E222FA100E34BCF /* pad_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459401E222FA100E34BCF /* pad_bg.png */; };
+		748459521E222FA100E34BCF /* pad_down_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459411E222FA100E34BCF /* pad_down_off.png */; };
+		748459531E222FA100E34BCF /* pad_down_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459421E222FA100E34BCF /* pad_down_on.png */; };
+		748459541E222FA100E34BCF /* pad_left_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459431E222FA100E34BCF /* pad_left_off.png */; };
+		748459551E222FA100E34BCF /* pad_left_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459441E222FA100E34BCF /* pad_left_on.png */; };
+		748459561E222FA100E34BCF /* pad_right_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459451E222FA100E34BCF /* pad_right_off.png */; };
+		748459571E222FA100E34BCF /* pad_right_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459461E222FA100E34BCF /* pad_right_on.png */; };
+		748459581E222FA100E34BCF /* pad_up_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459471E222FA100E34BCF /* pad_up_off.png */; };
+		748459591E222FA100E34BCF /* pad_up_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459481E222FA100E34BCF /* pad_up_on.png */; };
+		7484595B1E222FEA00E34BCF /* PADView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7484595A1E222FEA00E34BCF /* PADView.m */; };
 		74B47A2F1E1F73BC00B5ADFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A2E1E1F73BC00B5ADFE /* main.m */; };
 		74B47A321E1F73BC00B5ADFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A311E1F73BC00B5ADFE /* AppDelegate.m */; };
 		74B47A351E1F73BC00B5ADFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A341E1F73BC00B5ADFE /* ViewController.m */; };
 		74B47A381E1F73BC00B5ADFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B47A361E1F73BC00B5ADFE /* Main.storyboard */; };
 		74B47A3A1E1F73BC00B5ADFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B47A391E1F73BC00B5ADFE /* Assets.xcassets */; };
 		74B47A3D1E1F73BC00B5ADFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B47A3B1E1F73BC00B5ADFE /* LaunchScreen.storyboard */; };
+		74B47A4C1E1F748200B5ADFE /* apu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A451E1F748200B5ADFE /* apu.cpp */; };
+		74B47A4D1E1F748200B5ADFE /* cartridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A461E1F748200B5ADFE /* cartridge.cpp */; };
+		74B47A4E1E1F748200B5ADFE /* cpu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A471E1F748200B5ADFE /* cpu.cpp */; };
+		74B47A4F1E1F748200B5ADFE /* joypad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A481E1F748200B5ADFE /* joypad.cpp */; };
+		74B47A501E1F748200B5ADFE /* mapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A491E1F748200B5ADFE /* mapper.cpp */; };
+		74B47A511E1F748200B5ADFE /* palette.inc in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A4A1E1F748200B5ADFE /* palette.inc */; };
+		74B47A521E1F748200B5ADFE /* ppu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A4B1E1F748200B5ADFE /* ppu.cpp */; };
+		74B47A571E1F749000B5ADFE /* mapper1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A531E1F749000B5ADFE /* mapper1.cpp */; };
+		74B47A581E1F749000B5ADFE /* mapper2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A541E1F749000B5ADFE /* mapper2.cpp */; };
+		74B47A591E1F749000B5ADFE /* mapper3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A551E1F749000B5ADFE /* mapper3.cpp */; };
+		74B47A5A1E1F749000B5ADFE /* mapper4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A561E1F749000B5ADFE /* mapper4.cpp */; };
+		74B47A6B1E1F74C800B5ADFE /* Blip_Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A681E1F74C800B5ADFE /* Blip_Buffer.cpp */; };
+		74B47A6C1E1F74C800B5ADFE /* Nes_Apu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A691E1F74C800B5ADFE /* Nes_Apu.cpp */; };
+		74B47A6D1E1F74C900B5ADFE /* Nes_Oscs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A6A1E1F74C800B5ADFE /* Nes_Oscs.cpp */; };
+		74B47A761E1F74F100B5ADFE /* nes-core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A741E1F74F100B5ADFE /* nes-core.cpp */; };
+		74B47A791E20537700B5ADFE /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B47A781E20537700B5ADFE /* OpenAL.framework */; };
+		74B47A7B1E2053B300B5ADFE /* NESView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A7A1E2053B300B5ADFE /* NESView.m */; };
+		74B47A821E20A2E300B5ADFE /* ic_menu_white_24dp.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B47A811E20A2E300B5ADFE /* ic_menu_white_24dp.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		748459381E222FA100E34BCF /* button_a_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_a_off.png; sourceTree = "<group>"; };
+		748459391E222FA100E34BCF /* button_a_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_a_on.png; sourceTree = "<group>"; };
+		7484593A1E222FA100E34BCF /* button_b_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_b_off.png; sourceTree = "<group>"; };
+		7484593B1E222FA100E34BCF /* button_b_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_b_on.png; sourceTree = "<group>"; };
+		7484593C1E222FA100E34BCF /* button_select_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_select_off.png; sourceTree = "<group>"; };
+		7484593D1E222FA100E34BCF /* button_select_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_select_on.png; sourceTree = "<group>"; };
+		7484593E1E222FA100E34BCF /* button_start_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_start_off.png; sourceTree = "<group>"; };
+		7484593F1E222FA100E34BCF /* button_start_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_start_on.png; sourceTree = "<group>"; };
+		748459401E222FA100E34BCF /* pad_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_bg.png; sourceTree = "<group>"; };
+		748459411E222FA100E34BCF /* pad_down_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_down_off.png; sourceTree = "<group>"; };
+		748459421E222FA100E34BCF /* pad_down_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_down_on.png; sourceTree = "<group>"; };
+		748459431E222FA100E34BCF /* pad_left_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_left_off.png; sourceTree = "<group>"; };
+		748459441E222FA100E34BCF /* pad_left_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_left_on.png; sourceTree = "<group>"; };
+		748459451E222FA100E34BCF /* pad_right_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_right_off.png; sourceTree = "<group>"; };
+		748459461E222FA100E34BCF /* pad_right_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_right_on.png; sourceTree = "<group>"; };
+		748459471E222FA100E34BCF /* pad_up_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_up_off.png; sourceTree = "<group>"; };
+		748459481E222FA100E34BCF /* pad_up_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_up_on.png; sourceTree = "<group>"; };
+		7484595A1E222FEA00E34BCF /* PADView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADView.m; sourceTree = "<group>"; };
+		7484595C1E22300200E34BCF /* PADView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PADView.h; sourceTree = "<group>"; };
 		74B47A2A1E1F73BC00B5ADFE /* LaiNES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaiNES.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B47A2E1E1F73BC00B5ADFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		74B47A301E1F73BC00B5ADFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +81,45 @@
 		74B47A391E1F73BC00B5ADFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74B47A3C1E1F73BC00B5ADFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74B47A3E1E1F73BC00B5ADFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74B47A451E1F748200B5ADFE /* apu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = apu.cpp; path = cpp/src/apu.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A461E1F748200B5ADFE /* cartridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cartridge.cpp; path = cpp/src/cartridge.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A471E1F748200B5ADFE /* cpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cpu.cpp; path = cpp/src/cpu.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A481E1F748200B5ADFE /* joypad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = joypad.cpp; path = cpp/src/joypad.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A491E1F748200B5ADFE /* mapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mapper.cpp; path = cpp/src/mapper.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A4A1E1F748200B5ADFE /* palette.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; name = palette.inc; path = cpp/src/palette.inc; sourceTree = SOURCE_ROOT; };
+		74B47A4B1E1F748200B5ADFE /* ppu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ppu.cpp; path = cpp/src/ppu.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A531E1F749000B5ADFE /* mapper1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mapper1.cpp; path = cpp/src/mappers/mapper1.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A541E1F749000B5ADFE /* mapper2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mapper2.cpp; path = cpp/src/mappers/mapper2.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A551E1F749000B5ADFE /* mapper3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mapper3.cpp; path = cpp/src/mappers/mapper3.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A561E1F749000B5ADFE /* mapper4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mapper4.cpp; path = cpp/src/mappers/mapper4.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A5B1E1F74A000B5ADFE /* apu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = apu.hpp; path = cpp/src/include/apu.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A5C1E1F74A000B5ADFE /* cartridge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = cartridge.hpp; path = cpp/src/include/cartridge.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A5D1E1F74A000B5ADFE /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = common.hpp; path = cpp/src/include/common.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A5E1E1F74A000B5ADFE /* cpu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = cpu.hpp; path = cpp/src/include/cpu.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A5F1E1F74A000B5ADFE /* hal.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = hal.hpp; path = cpp/src/include/hal.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A601E1F74A000B5ADFE /* joypad.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = joypad.hpp; path = cpp/src/include/joypad.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A611E1F74A000B5ADFE /* mapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = mapper.hpp; path = cpp/src/include/mapper.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A621E1F74A000B5ADFE /* ppu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ppu.hpp; path = cpp/src/include/ppu.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A631E1F74AE00B5ADFE /* mapper0.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = mapper0.hpp; path = cpp/src/include/mappers/mapper0.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A641E1F74AE00B5ADFE /* mapper1.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = mapper1.hpp; path = cpp/src/include/mappers/mapper1.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A651E1F74AE00B5ADFE /* mapper2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = mapper2.hpp; path = cpp/src/include/mappers/mapper2.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A661E1F74AE00B5ADFE /* mapper3.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = mapper3.hpp; path = cpp/src/include/mappers/mapper3.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A671E1F74AE00B5ADFE /* mapper4.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = mapper4.hpp; path = cpp/src/include/mappers/mapper4.hpp; sourceTree = SOURCE_ROOT; };
+		74B47A681E1F74C800B5ADFE /* Blip_Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Blip_Buffer.cpp; path = cpp/lib/Blip_Buffer.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A691E1F74C800B5ADFE /* Nes_Apu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Nes_Apu.cpp; path = cpp/lib/Nes_Apu.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A6A1E1F74C800B5ADFE /* Nes_Oscs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Nes_Oscs.cpp; path = cpp/lib/Nes_Oscs.cpp; sourceTree = SOURCE_ROOT; };
+		74B47A6E1E1F74D500B5ADFE /* blargg_common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = blargg_common.h; path = cpp/lib/include/blargg_common.h; sourceTree = SOURCE_ROOT; };
+		74B47A6F1E1F74D500B5ADFE /* blargg_source.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = blargg_source.h; path = cpp/lib/include/blargg_source.h; sourceTree = SOURCE_ROOT; };
+		74B47A701E1F74D500B5ADFE /* Blip_Buffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Blip_Buffer.h; path = cpp/lib/include/Blip_Buffer.h; sourceTree = SOURCE_ROOT; };
+		74B47A711E1F74D500B5ADFE /* Blip_Synth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Blip_Synth.h; path = cpp/lib/include/Blip_Synth.h; sourceTree = SOURCE_ROOT; };
+		74B47A721E1F74D500B5ADFE /* Nes_Apu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Nes_Apu.h; path = cpp/lib/include/Nes_Apu.h; sourceTree = SOURCE_ROOT; };
+		74B47A731E1F74D500B5ADFE /* Nes_Oscs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Nes_Oscs.h; path = cpp/lib/include/Nes_Oscs.h; sourceTree = SOURCE_ROOT; };
+		74B47A741E1F74F100B5ADFE /* nes-core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "nes-core.cpp"; sourceTree = "<group>"; };
+		74B47A781E20537700B5ADFE /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		74B47A7A1E2053B300B5ADFE /* NESView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NESView.m; sourceTree = "<group>"; };
+		74B47A7C1E2053C800B5ADFE /* NESView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NESView.h; sourceTree = "<group>"; };
+		74B47A7D1E2056B500B5ADFE /* nes-core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nes-core.h"; sourceTree = "<group>"; };
+		74B47A811E20A2E300B5ADFE /* ic_menu_white_24dp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_menu_white_24dp.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74B47A791E20537700B5ADFE /* OpenAL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +139,7 @@
 			children = (
 				74B47A2C1E1F73BC00B5ADFE /* LaiNES */,
 				74B47A2B1E1F73BC00B5ADFE /* Products */,
+				74B47A771E20537700B5ADFE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,10 +154,18 @@
 		74B47A2C1E1F73BC00B5ADFE /* LaiNES */ = {
 			isa = PBXGroup;
 			children = (
+				74B47A7E1E20A2C100B5ADFE /* assets */,
+				74B47A441E1F73DD00B5ADFE /* core */,
 				74B47A301E1F73BC00B5ADFE /* AppDelegate.h */,
 				74B47A311E1F73BC00B5ADFE /* AppDelegate.m */,
 				74B47A331E1F73BC00B5ADFE /* ViewController.h */,
 				74B47A341E1F73BC00B5ADFE /* ViewController.m */,
+				7484595C1E22300200E34BCF /* PADView.h */,
+				7484595A1E222FEA00E34BCF /* PADView.m */,
+				74B47A7C1E2053C800B5ADFE /* NESView.h */,
+				74B47A7A1E2053B300B5ADFE /* NESView.m */,
+				74B47A741E1F74F100B5ADFE /* nes-core.cpp */,
+				74B47A7D1E2056B500B5ADFE /* nes-core.h */,
 				74B47A361E1F73BC00B5ADFE /* Main.storyboard */,
 				74B47A391E1F73BC00B5ADFE /* Assets.xcassets */,
 				74B47A3B1E1F73BC00B5ADFE /* LaunchScreen.storyboard */,
@@ -77,6 +181,79 @@
 				74B47A2E1E1F73BC00B5ADFE /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		74B47A441E1F73DD00B5ADFE /* core */ = {
+			isa = PBXGroup;
+			children = (
+				74B47A681E1F74C800B5ADFE /* Blip_Buffer.cpp */,
+				74B47A691E1F74C800B5ADFE /* Nes_Apu.cpp */,
+				74B47A6A1E1F74C800B5ADFE /* Nes_Oscs.cpp */,
+				74B47A6E1E1F74D500B5ADFE /* blargg_common.h */,
+				74B47A6F1E1F74D500B5ADFE /* blargg_source.h */,
+				74B47A701E1F74D500B5ADFE /* Blip_Buffer.h */,
+				74B47A711E1F74D500B5ADFE /* Blip_Synth.h */,
+				74B47A721E1F74D500B5ADFE /* Nes_Apu.h */,
+				74B47A731E1F74D500B5ADFE /* Nes_Oscs.h */,
+				74B47A451E1F748200B5ADFE /* apu.cpp */,
+				74B47A461E1F748200B5ADFE /* cartridge.cpp */,
+				74B47A471E1F748200B5ADFE /* cpu.cpp */,
+				74B47A481E1F748200B5ADFE /* joypad.cpp */,
+				74B47A491E1F748200B5ADFE /* mapper.cpp */,
+				74B47A4A1E1F748200B5ADFE /* palette.inc */,
+				74B47A531E1F749000B5ADFE /* mapper1.cpp */,
+				74B47A541E1F749000B5ADFE /* mapper2.cpp */,
+				74B47A551E1F749000B5ADFE /* mapper3.cpp */,
+				74B47A561E1F749000B5ADFE /* mapper4.cpp */,
+				74B47A4B1E1F748200B5ADFE /* ppu.cpp */,
+				74B47A5B1E1F74A000B5ADFE /* apu.hpp */,
+				74B47A5C1E1F74A000B5ADFE /* cartridge.hpp */,
+				74B47A5D1E1F74A000B5ADFE /* common.hpp */,
+				74B47A5E1E1F74A000B5ADFE /* cpu.hpp */,
+				74B47A5F1E1F74A000B5ADFE /* hal.hpp */,
+				74B47A601E1F74A000B5ADFE /* joypad.hpp */,
+				74B47A611E1F74A000B5ADFE /* mapper.hpp */,
+				74B47A621E1F74A000B5ADFE /* ppu.hpp */,
+				74B47A631E1F74AE00B5ADFE /* mapper0.hpp */,
+				74B47A641E1F74AE00B5ADFE /* mapper1.hpp */,
+				74B47A651E1F74AE00B5ADFE /* mapper2.hpp */,
+				74B47A661E1F74AE00B5ADFE /* mapper3.hpp */,
+				74B47A671E1F74AE00B5ADFE /* mapper4.hpp */,
+			);
+			name = core;
+			sourceTree = "<group>";
+		};
+		74B47A771E20537700B5ADFE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74B47A781E20537700B5ADFE /* OpenAL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		74B47A7E1E20A2C100B5ADFE /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				74B47A811E20A2E300B5ADFE /* ic_menu_white_24dp.png */,
+				748459381E222FA100E34BCF /* button_a_off.png */,
+				748459391E222FA100E34BCF /* button_a_on.png */,
+				7484593A1E222FA100E34BCF /* button_b_off.png */,
+				7484593B1E222FA100E34BCF /* button_b_on.png */,
+				7484593C1E222FA100E34BCF /* button_select_off.png */,
+				7484593D1E222FA100E34BCF /* button_select_on.png */,
+				7484593E1E222FA100E34BCF /* button_start_off.png */,
+				7484593F1E222FA100E34BCF /* button_start_on.png */,
+				748459401E222FA100E34BCF /* pad_bg.png */,
+				748459411E222FA100E34BCF /* pad_down_off.png */,
+				748459421E222FA100E34BCF /* pad_down_on.png */,
+				748459431E222FA100E34BCF /* pad_left_off.png */,
+				748459441E222FA100E34BCF /* pad_left_on.png */,
+				748459451E222FA100E34BCF /* pad_right_off.png */,
+				748459461E222FA100E34BCF /* pad_right_on.png */,
+				748459471E222FA100E34BCF /* pad_up_off.png */,
+				748459481E222FA100E34BCF /* pad_up_on.png */,
+			);
+			name = assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +287,7 @@
 				TargetAttributes = {
 					74B47A291E1F73BC00B5ADFE = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = J24C22Y22U;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -137,9 +315,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				748459531E222FA100E34BCF /* pad_down_on.png in Resources */,
+				7484594F1E222FA100E34BCF /* button_start_off.png in Resources */,
+				7484594B1E222FA100E34BCF /* button_b_off.png in Resources */,
+				748459551E222FA100E34BCF /* pad_left_on.png in Resources */,
+				748459581E222FA100E34BCF /* pad_up_off.png in Resources */,
 				74B47A3D1E1F73BC00B5ADFE /* LaunchScreen.storyboard in Resources */,
+				748459491E222FA100E34BCF /* button_a_off.png in Resources */,
+				748459511E222FA100E34BCF /* pad_bg.png in Resources */,
+				748459571E222FA100E34BCF /* pad_right_on.png in Resources */,
+				7484594C1E222FA100E34BCF /* button_b_on.png in Resources */,
+				7484594E1E222FA100E34BCF /* button_select_on.png in Resources */,
 				74B47A3A1E1F73BC00B5ADFE /* Assets.xcassets in Resources */,
+				748459561E222FA100E34BCF /* pad_right_off.png in Resources */,
+				748459501E222FA100E34BCF /* button_start_on.png in Resources */,
+				74B47A821E20A2E300B5ADFE /* ic_menu_white_24dp.png in Resources */,
+				7484594A1E222FA100E34BCF /* button_a_on.png in Resources */,
+				748459541E222FA100E34BCF /* pad_left_off.png in Resources */,
+				748459591E222FA100E34BCF /* pad_up_on.png in Resources */,
+				748459521E222FA100E34BCF /* pad_down_off.png in Resources */,
 				74B47A381E1F73BC00B5ADFE /* Main.storyboard in Resources */,
+				7484594D1E222FA100E34BCF /* button_select_off.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,9 +346,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7484595B1E222FEA00E34BCF /* PADView.m in Sources */,
+				74B47A761E1F74F100B5ADFE /* nes-core.cpp in Sources */,
+				74B47A591E1F749000B5ADFE /* mapper3.cpp in Sources */,
+				74B47A501E1F748200B5ADFE /* mapper.cpp in Sources */,
+				74B47A521E1F748200B5ADFE /* ppu.cpp in Sources */,
+				74B47A4F1E1F748200B5ADFE /* joypad.cpp in Sources */,
+				74B47A581E1F749000B5ADFE /* mapper2.cpp in Sources */,
+				74B47A7B1E2053B300B5ADFE /* NESView.m in Sources */,
+				74B47A4E1E1F748200B5ADFE /* cpu.cpp in Sources */,
 				74B47A351E1F73BC00B5ADFE /* ViewController.m in Sources */,
+				74B47A6C1E1F74C800B5ADFE /* Nes_Apu.cpp in Sources */,
+				74B47A4D1E1F748200B5ADFE /* cartridge.cpp in Sources */,
 				74B47A321E1F73BC00B5ADFE /* AppDelegate.m in Sources */,
+				74B47A4C1E1F748200B5ADFE /* apu.cpp in Sources */,
+				74B47A511E1F748200B5ADFE /* palette.inc in Sources */,
 				74B47A2F1E1F73BC00B5ADFE /* main.m in Sources */,
+				74B47A6B1E1F74C800B5ADFE /* Blip_Buffer.cpp in Sources */,
+				74B47A6D1E1F74C900B5ADFE /* Nes_Oscs.cpp in Sources */,
+				74B47A571E1F749000B5ADFE /* mapper1.cpp in Sources */,
+				74B47A5A1E1F749000B5ADFE /* mapper4.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +483,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J24C22Y22U;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				INFOPLIST_FILE = LaiNES/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.suzukiplan.LaiNES;
@@ -281,6 +496,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J24C22Y22U;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				INFOPLIST_FILE = LaiNES/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.suzukiplan.LaiNES;
@@ -307,6 +524,7 @@
 				74B47A431E1F73BC00B5ADFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

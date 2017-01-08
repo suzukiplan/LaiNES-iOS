@@ -1,0 +1,29 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "12A22B0F8DE65F95389981FFE328EA04C25414D9" : 9223372036854775807,
+    "1AEA36E90BDCC4AD56B3CDE6110699BE51251F11" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5C00A99A-B4D8-4AE7-9C8F-531E1080594C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "12A22B0F8DE65F95389981FFE328EA04C25414D9" : "LaiNES-iOS\/cpp\/",
+    "1AEA36E90BDCC4AD56B3CDE6110699BE51251F11" : "NesTest\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "LaiNES",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "LaiNES.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/suzukiplan\/LaiNES.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "12A22B0F8DE65F95389981FFE328EA04C25414D9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/suzukiplan\/nes-view-android.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1AEA36E90BDCC4AD56B3CDE6110699BE51251F11"
+    }
+  ]
+}
