@@ -86,7 +86,7 @@ static void* tick_executor(void* args) {
 
     _gameFrame = [[UIView alloc] initWithFrame:CGRectMake(0, 20 + BUTTON_SIZE + MARGIN * 2, _width, _width / 4 * 3)];
     [_gameFrame setBackgroundColor:[UIColor blackColor]];
-    _nesView = [[NESView alloc] init];
+    _nesView = [[NESView alloc] initWithFrame:CGRectMake(0, 0, 256, 240)];
     [_gameFrame addSubview:_nesView];
     [self.view addSubview:_gameFrame];
 
