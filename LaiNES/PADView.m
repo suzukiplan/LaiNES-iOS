@@ -23,6 +23,16 @@ struct _PADStatus {
 };
 typedef struct _PADStatus PADStatus;
 
+#define PADDING 10
+#define BUTTON_SIZE 80
+#define START_AREA_HEIGHT 50
+#define START_AREA_WIDTH 140
+#define START_WIDTH 64
+#define START_HEIGHT 20
+
+#define TAG_PAD_AREA 0x1001
+#define TAG_BUTTON_AREA 0x1002
+
 @interface PADView()
 @property (readwrite) UIImageView* cursor;
 @property (readwrite) UIImage* upOff;
@@ -38,8 +48,13 @@ typedef struct _PADStatus PADStatus;
 @property (readwrite) UIImage* rightOn;
 @property (readwrite) UIImageView* right;
 @property (readwrite) UIView* cursorTouchArea;
-@property (readwrite) UIButton* a;
-@property (readwrite) UIButton* b;
+@property (readwrite) UIImage* aOff;
+@property (readwrite) UIImage* aOn;
+@property (readwrite) UIImageView* a;
+@property (readwrite) UIImage* bOff;
+@property (readwrite) UIImage* bOn;
+@property (readwrite) UIImageView* b;
+@property (readwrite) UIView* buttonTouchArea;
 @property (readwrite) UIButton* start;
 @property (readwrite) UIButton* select;
 @property (readwrite) PADStatus padStatus;
@@ -68,15 +83,9 @@ typedef struct _PADStatus PADStatus;
     return self;
 }
 
-#define PADDING 10
-#define BUTTON_SIZE 80
-#define START_AREA_HEIGHT 50
-#define START_AREA_WIDTH 140
-#define START_WIDTH 64
-#define START_HEIGHT 20
-
 -(void)_init {
     self.userInteractionEnabled = YES;
+    self.multipleTouchEnabled = YES;
     CGFloat width = self.frame.size.width;
     CGFloat height = self.frame.size.height;
     int x, y, w, h;
@@ -128,34 +137,39 @@ typedef struct _PADStatus PADStatus;
     [self addSubview:_cursor];
 
     _cursorTouchArea = [[UIView alloc] initWithFrame:_cursor.frame];
+    _cursorTouchArea.tag = TAG_PAD_AREA;
     [self addSubview:_cursorTouchArea];
 
     x = width - BUTTON_SIZE - PADDING;
     y = (height - BUTTON_SIZE - START_AREA_HEIGHT) / 2 - (BUTTON_SIZE + PADDING) / 2;
     w = BUTTON_SIZE;
     h = w;
-    _a = [[UIButton alloc] initWithFrame:CGRectMake(x, y, w, h)];
-    [_a setBackgroundImage:[UIImage imageNamed:@"button_a_off.png"] forState:UIControlStateNormal];
-    [_a setBackgroundImage:[UIImage imageNamed:@"button_a_on.png"] forState:UIControlStateHighlighted];
-    [_a addTarget:self action:@selector(touchDownA) forControlEvents:UIControlEventTouchDown];
-    [_a addTarget:self action:@selector(touchUpA) forControlEvents:UIControlEventTouchUpInside];
-    [_a addTarget:self action:@selector(touchUpA) forControlEvents:UIControlEventTouchUpOutside];
-    [_a addTarget:self action:@selector(touchUpA) forControlEvents:UIControlEventTouchCancel];
+    _aOff = [UIImage imageNamed:@"button_a_off.png"];
+    _aOn = [UIImage imageNamed:@"button_a_on.png"];
+    _a = [[UIImageView alloc] initWithImage:_aOff];
+    _a.contentMode = UIViewContentModeScaleToFill;
+    _a.frame = CGRectMake(x, y, w, h);
     [self addSubview:_a];
 
     x = width - BUTTON_SIZE - PADDING;
     y = (height - BUTTON_SIZE - START_AREA_HEIGHT) / 2 + (BUTTON_SIZE + PADDING) / 2;
     w = BUTTON_SIZE;
     h = w;
-    _b = [[UIButton alloc] initWithFrame:CGRectMake(x, y, w, h)];
-    [_b setBackgroundImage:[UIImage imageNamed:@"button_b_off.png"] forState:UIControlStateNormal];
-    [_b setBackgroundImage:[UIImage imageNamed:@"button_b_on.png"] forState:UIControlStateHighlighted];
-    [_b addTarget:self action:@selector(touchDownB) forControlEvents:UIControlEventTouchDown];
-    [_b addTarget:self action:@selector(touchUpB) forControlEvents:UIControlEventTouchUpInside];
-    [_b addTarget:self action:@selector(touchUpB) forControlEvents:UIControlEventTouchUpOutside];
-    [_b addTarget:self action:@selector(touchUpB) forControlEvents:UIControlEventTouchCancel];
+    _bOff = [UIImage imageNamed:@"button_b_off.png"];
+    _bOn = [UIImage imageNamed:@"button_b_on.png"];
+    _b = [[UIImageView alloc] initWithImage:_aOff];
+    _b.contentMode = UIViewContentModeScaleToFill;
+    _b.frame = CGRectMake(x, y, w, h);
     [self addSubview:_b];
 
+    x = _a.frame.origin.x;
+    y = _a.frame.origin.y;
+    w = BUTTON_SIZE;
+    h = BUTTON_SIZE * 2 + PADDING;
+    _buttonTouchArea = [[UIView alloc] initWithFrame:CGRectMake(x, y, w, h)];
+    _buttonTouchArea.tag = TAG_BUTTON_AREA;
+    [self addSubview:_buttonTouchArea];
+    
     x = (width - START_AREA_WIDTH) / 2;
     y = _cursor.frame.origin.y + _cursor.frame.size.height + PADDING;
     w = START_AREA_WIDTH;
@@ -201,6 +215,16 @@ typedef struct _PADStatus PADStatus;
     s |= _padStatus.left ? 64 : 0;
     s |= _padStatus.right ? 128 : 0;
     int p = PAD_STATUS;
+    if ((p & 1) && !(s & 1)) {
+        [_a setImage:_aOff];
+    } else if (!(p & 1) && (s & 1)) {
+        [_a setImage:_aOn];
+    }
+    if ((p & 2) && !(s & 2)) {
+        [_b setImage:_bOff];
+    } else if (!(p & 2) && (s & 2)) {
+        [_b setImage:_bOn];
+    }
     if ((p & 16) && !(s & 16)) {
         [_up setImage:_upOff];
     } else if (!(p & 16) && (s & 16)) {
@@ -222,26 +246,6 @@ typedef struct _PADStatus PADStatus;
         [_right setImage:_rightOn];
     }
     PAD_STATUS = s;
-}
-
--(void)touchDownA {
-    _padStatus.a = YES;
-    [self setPadStatus];
-}
-
--(void)touchUpA {
-    _padStatus.a = NO;
-    [self setPadStatus];
-}
-
--(void)touchDownB {
-    _padStatus.b = YES;
-    [self setPadStatus];
-}
-
--(void)touchUpB {
-    _padStatus.b = NO;
-    [self setPadStatus];
 }
 
 -(void)touchDownStart {
@@ -286,25 +290,55 @@ typedef struct _PADStatus PADStatus;
     [self setPadStatus];
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if ([event touchesForView:_cursorTouchArea]) {
-        [self checkCursorWithOrigin:[[touches anyObject] locationInView:self]];
+-(void)checkButtonWithOrigin:(CGPoint)origin {
+    int x = origin.x - _buttonTouchArea.frame.origin.x;
+    int y = origin.y - _buttonTouchArea.frame.origin.y;
+    if (x < 0 || BUTTON_SIZE < x || y < 0 || BUTTON_SIZE * 2 + PADDING < y) {
+        _padStatus.a = NO;
+        _padStatus.b = NO;
+    } else {
+        if (_buttonTouchArea.frame.size.height / 2 < y) {
+            _padStatus.a = NO;
+            _padStatus.b = YES;
+        } else {
+            _padStatus.a = YES;
+            _padStatus.b = NO;
+        }
     }
+    [self setPadStatus];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self checkTouches:touches event:event];
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    if ([event touchesForView:_cursorTouchArea]) {
-        [self checkCursorWithOrigin:[[touches anyObject] locationInView:self]];
+    [self checkTouches:touches event:event];
+}
+
+-(void)checkTouches:(NSSet*)touches event:(UIEvent*)event {
+    for (UITouch* touch in touches) {
+        if (touch.view.tag == TAG_PAD_AREA) {
+            [self checkCursorWithOrigin:[touch locationInView:self]];
+        } else if (touch.view.tag == TAG_BUTTON_AREA) {
+            [self checkButtonWithOrigin:[touch locationInView:self]];
+        }
     }
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if ([event touchesForView:_cursorTouchArea]) {
-        _padStatus.up = NO;
-        _padStatus.down = NO;
-        _padStatus.left = NO;
-        _padStatus.right = NO;
-        [self setPadStatus];
+    for (UITouch* touch in touches) {
+        if (touch.view.tag == TAG_PAD_AREA) {
+            _padStatus.up = NO;
+            _padStatus.down = NO;
+            _padStatus.left = NO;
+            _padStatus.right = NO;
+            [self setPadStatus];
+        } else if (touch.view.tag == TAG_BUTTON_AREA) {
+            _padStatus.a = NO;
+            _padStatus.b = NO;
+            [self setPadStatus];
+        }
     }
 }
 
