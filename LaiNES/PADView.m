@@ -157,7 +157,7 @@ typedef struct _PADStatus PADStatus;
     h = w;
     _bOff = [UIImage imageNamed:@"button_b_off.png"];
     _bOn = [UIImage imageNamed:@"button_b_on.png"];
-    _b = [[UIImageView alloc] initWithImage:_aOff];
+    _b = [[UIImageView alloc] initWithImage:_bOff];
     _b.contentMode = UIViewContentModeScaleToFill;
     _b.frame = CGRectMake(x, y, w, h);
     [self addSubview:_b];
@@ -297,12 +297,15 @@ typedef struct _PADStatus PADStatus;
         _padStatus.a = NO;
         _padStatus.b = NO;
     } else {
-        if (_buttonTouchArea.frame.size.height / 2 < y) {
+        if (BUTTON_SIZE + PADDING + 10 < y) {
             _padStatus.a = NO;
             _padStatus.b = YES;
-        } else {
+        } else if (y < BUTTON_SIZE - 10) {
             _padStatus.a = YES;
             _padStatus.b = NO;
+        } else {
+            _padStatus.a = YES;
+            _padStatus.b = YES;
         }
     }
     [self setPadStatus];
