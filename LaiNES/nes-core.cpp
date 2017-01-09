@@ -39,6 +39,8 @@ static u16 _vram[122880 / 2];
 #define OUT_BUFFER_SIZE 8820
 #define OUT_BUFFER_SIZE_DIV2 4410
 
+#define QUEUE_SIZE 163840
+
 typedef ALvoid AL_APIENTRY (*alBufferDataStaticProcPtr)(const ALint bid, ALenum format, ALvoid* data, ALsizei size, ALsizei freq);
 
 struct AL {
@@ -50,7 +52,7 @@ struct AL {
 };
 static struct AL _al;
 static pthread_t _snd;
-static short _q[16384];
+static short _q[QUEUE_SIZE];
 static int _qsize;
 static unsigned char _silent[OUT_BUFFER_SIZE];
 static int _abp[OUT_BUFFER_SIZE_DIV2];
@@ -65,6 +67,8 @@ static int _init_al();
 static void _term_al();
 static void* _sound_thread(void* context);
 static void _enqueue(const void* buffer);
+
+static int _fps;
 
 extern "C" void nes_init() {
     pthread_mutex_init(&_mt, NULL);
@@ -107,7 +111,14 @@ extern "C" bool nes_loadRom(const void* rom, size_t size) {
     return b;
 }
 
+extern "C" int nes_fps() {
+    return _fps;
+}
+
 extern "C" void nes_tick(u8 keyStateP1, u8 keyStateP2) {
+    static time_t t;
+    static int frame;
+
     // load check
     if (!Cartridge::loaded()) return;
     
@@ -121,6 +132,14 @@ extern "C" void nes_tick(u8 keyStateP1, u8 keyStateP2) {
     _keyState[0] = keyStateP1;
     _keyState[1] = keyStateP2;
     _run = true;
+
+    frame++;
+    time_t now = time(NULL);
+    if (t != now) {
+        t = now;
+        _fps = frame;
+        frame = 0;
+    }
 }
 
 extern "C" void nes_vram_copy(u16* buffer) {
@@ -220,7 +239,7 @@ static void _enqueue(const void* buffer)
 
 static void* _dequeue(int* size)
 {
-    static unsigned char result[2][16384 * 2];
+    static unsigned char result[2][QUEUE_SIZE];
     static int page;
     int p = page;
     *size = _qsize * 2;

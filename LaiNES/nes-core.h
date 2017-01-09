@@ -23,6 +23,7 @@ extern "C" {
     bool nes_loadRom(const void* rom, size_t size);
     void nes_tick(u8 keyStateP1, u8 keyStateP2);
     void nes_vram_copy(u16* buffer);
+    int nes_fps();
 #ifdef __cplusplus
 };
 #endif

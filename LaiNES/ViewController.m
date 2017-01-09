@@ -36,6 +36,7 @@ static volatile BOOL alive;
 // execute tick in 1/60sec
 static void* tick_executor(void* args) {
     NSLog(@"tick-executor start");
+    int frame = 0;
     int s[] = {
         16000,
         17000,
@@ -49,6 +50,7 @@ static void* tick_executor(void* args) {
     while (alive) {
         st = mach_absolute_time();
         nes_tick(PAD_STATUS, 0);
+        if (0 == ++frame % 300) NSLog(@"%d fps", nes_fps());
         df = (int)(((mach_absolute_time() - st) / tb.denom) / 1000);
         if (df < s[i]) usleep(s[i] - df);
         i++;
