@@ -29,14 +29,15 @@
 
 -(void)controllerDidConnect {
     NSLog(@"GameController did connected");
+    [self setupControllers];
 }
 
 -(void)controllerDidDisconnect {
     NSLog(@"GameController did disconnected");
+    [self setupControllers];
 }
 
-- (void)setupControllers:(NSNotification *)notification
-{
+- (void)setupControllers {
     NSArray<GCController*>* contollers = [GCController controllers];
     if (0 < contollers.count) {
         self.controller = contollers[0];
