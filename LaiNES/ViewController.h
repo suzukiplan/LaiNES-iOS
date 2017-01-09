@@ -7,6 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <pthread.h>
+#import <mach/mach_time.h>
+#import "AppDelegate.h"
+#import "NESview.h"
+#import "PADView.h"
+#import "nes-core.h"
 
 @interface ViewController : UIViewController
 

@@ -24,6 +24,7 @@ static volatile bool alive_flag=true;
 static volatile bool end_flag=false;
 
 @interface NESLayer : CALayer
+@property (weak) NESView* view;
 @end
 
 @implementation NESView
@@ -63,6 +64,7 @@ static volatile bool end_flag=false;
     self.clearsContextBeforeDrawing = NO;
     self.multipleTouchEnabled = NO;
     self.userInteractionEnabled = NO;
+    ((NESLayer*)self.layer).view = self;
     _mpDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(setNeedsDisplay)];
     [_mpDisplayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 }
@@ -134,6 +136,7 @@ static void* GameLoop(void* args)
     CGImageRef cgImage = CGBitmapContextCreateImage(img[1 - bno]);
     self.contents = (__bridge id)cgImage;
     CFRelease(cgImage);
+    [self.view.delegate gameScreenDidUpdate];
 }
 
 - (void)dealloc

@@ -6,18 +6,14 @@
 //  Copyright © 2017年 SUZUKI PLAN. All rights reserved.
 //
 
-#import <pthread.h>
-#import <mach/mach_time.h>
 #import "ViewController.h"
-#import "NESview.h"
-#import "PADView.h"
-#import "nes-core.h"
 
 #define BUTTON_SIZE 36
 #define MARGIN 6
 #define MENU_WIDTH 240
 
-@interface ViewController ()
+@interface ViewController () <NESViewDelegate>
+@property (readwrite) id appDelegate;
 @property (readwrite) NSUserDefaults* pref;
 @property (readwrite) CGFloat width;
 @property (readwrite) CGFloat height;
@@ -32,6 +28,7 @@
 @end
 
 static volatile BOOL alive;
+static volatile int physicalPadStatus;
 
 // execute tick in 1/60sec
 static void* tick_executor(void* args) {
@@ -49,7 +46,7 @@ static void* tick_executor(void* args) {
     int df;
     while (alive) {
         st = mach_absolute_time();
-        nes_tick(PAD_STATUS, 0);
+        nes_tick(PAD_STATUS | physicalPadStatus, 0);
         if (0 == ++frame % 300) NSLog(@"%d fps", nes_fps());
         df = (int)(((mach_absolute_time() - st) / tb.denom) / 1000);
         if (df < s[i]) usleep(s[i] - df);
@@ -87,6 +84,7 @@ static void* tick_executor(void* args) {
     _gameFrame = [[UIView alloc] initWithFrame:CGRectMake(0, 20 + BUTTON_SIZE + MARGIN * 2, _width, _width / 4 * 3)];
     [_gameFrame setBackgroundColor:[UIColor blackColor]];
     _nesView = [[NESView alloc] initWithFrame:CGRectMake(0, 0, 256, 240)];
+    _nesView.delegate = self;
     [_gameFrame addSubview:_nesView];
     [self.view addSubview:_gameFrame];
 
@@ -120,6 +118,7 @@ static void* tick_executor(void* args) {
     [self setupLayout];
 
     [self startTickExecutor];
+    _appDelegate = [UIApplication sharedApplication].delegate;
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle {
@@ -268,5 +267,18 @@ static void* tick_executor(void* args) {
     // Dispose of any resources that can be recreated.
 }
 
+-(void)gameScreenDidUpdate {
+    GCGamepad *pad = ((AppDelegate*)_appDelegate).controller.gamepad;
+    int s = 0;
+    s |= pad.buttonA.pressed ? 1 : 0;
+    s |= pad.buttonB.pressed ? 2 : 0;
+    s |= pad.rightShoulder.pressed ? 4 : 0;
+    s |= pad.leftShoulder.pressed ? 8 : 0;
+    s |= pad.dpad.up.pressed ? 16 : 0;
+    s |= pad.dpad.down.pressed ? 32 : 0;
+    s |= pad.dpad.left.pressed ? 64 : 0;
+    s |= pad.dpad.right.pressed ? 128 : 0;
+    physicalPadStatus = s;
+}
 
 @end

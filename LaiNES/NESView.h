@@ -8,6 +8,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@protocol NESViewDelegate <NSObject>
+-(void)gameScreenDidUpdate;
+@end
+
 @interface NESView : UIView
+@property (readwrite) id<NESViewDelegate> delegate;
 -(BOOL)loadRomWithData:(NSData*)data;
 @end
