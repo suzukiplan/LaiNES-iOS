@@ -25,6 +25,7 @@
 		748459581E222FA100E34BCF /* pad_up_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459471E222FA100E34BCF /* pad_up_off.png */; };
 		748459591E222FA100E34BCF /* pad_up_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 748459481E222FA100E34BCF /* pad_up_on.png */; };
 		7484595B1E222FEA00E34BCF /* PADView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7484595A1E222FEA00E34BCF /* PADView.m */; };
+		748459621E236A4A00E34BCF /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 748459611E236A4A00E34BCF /* GameController.framework */; };
 		74B47A2F1E1F73BC00B5ADFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A2E1E1F73BC00B5ADFE /* main.m */; };
 		74B47A321E1F73BC00B5ADFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A311E1F73BC00B5ADFE /* AppDelegate.m */; };
 		74B47A351E1F73BC00B5ADFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B47A341E1F73BC00B5ADFE /* ViewController.m */; };
@@ -71,6 +72,7 @@
 		748459481E222FA100E34BCF /* pad_up_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_up_on.png; sourceTree = "<group>"; };
 		7484595A1E222FEA00E34BCF /* PADView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADView.m; sourceTree = "<group>"; };
 		7484595C1E22300200E34BCF /* PADView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PADView.h; sourceTree = "<group>"; };
+		748459611E236A4A00E34BCF /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 		74B47A2A1E1F73BC00B5ADFE /* LaiNES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaiNES.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B47A2E1E1F73BC00B5ADFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		74B47A301E1F73BC00B5ADFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				748459621E236A4A00E34BCF /* GameController.framework in Frameworks */,
 				74B47A791E20537700B5ADFE /* OpenAL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,6 +229,7 @@
 		74B47A771E20537700B5ADFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				748459611E236A4A00E34BCF /* GameController.framework */,
 				74B47A781E20537700B5ADFE /* OpenAL.framework */,
 			);
 			name = Frameworks;

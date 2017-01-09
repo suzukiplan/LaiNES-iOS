@@ -9,17 +9,42 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-
+@property (readwrite) GCController *controller;
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self
+               selector:@selector(controllerDidConnect)
+                   name:GCControllerDidConnectNotification
+                 object:nil];
+    [center addObserver:self
+               selector:@selector(controllerDidDisconnect)
+                   name:GCControllerDidDisconnectNotification
+                 object:nil];
     return YES;
 }
 
+-(void)controllerDidConnect {
+    NSLog(@"GameController did connected");
+    [self setupControllers];
+}
+
+-(void)controllerDidDisconnect {
+    NSLog(@"GameController did disconnected");
+    [self setupControllers];
+}
+
+- (void)setupControllers {
+    NSArray<GCController*>* contollers = [GCController controllers];
+    if (0 < contollers.count) {
+        self.controller = contollers[0];
+    } else {
+        self.controller = nil;
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
