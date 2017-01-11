@@ -25,10 +25,10 @@ typedef struct _PADStatus PADStatus;
 
 #define PADDING 10
 #define BUTTON_SIZE 80
-#define START_AREA_HEIGHT 50
-#define START_AREA_WIDTH 140
-#define START_WIDTH 64
-#define START_HEIGHT 20
+#define START_AREA_HEIGHT 70
+#define START_AREA_WIDTH 192
+#define START_WIDTH 96
+#define START_HEIGHT 48
 
 #define TAG_PAD_AREA 0x1001
 #define TAG_BUTTON_AREA 0x1002
@@ -92,7 +92,7 @@ typedef struct _PADStatus PADStatus;
 
     _cursor = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pad_bg.png"]];
     _cursor.contentMode = UIViewContentModeScaleToFill;
-    w = width * 10 / 18 - PADDING * 2;
+    w = width * 10 / 17 - PADDING * 2;
     h = w;
     x = PADDING;
     y = (height - h - START_AREA_HEIGHT) / 2;
@@ -177,10 +177,10 @@ typedef struct _PADStatus PADStatus;
     UIView* startArea = [[UIView alloc] initWithFrame:CGRectMake(x, y, w, h)];
     [self addSubview:startArea];
 
-    x = 0;
-    y = START_AREA_HEIGHT - 20;
-    w = 64;
-    h = 20;
+    x = START_AREA_WIDTH - START_WIDTH;
+    y = START_AREA_HEIGHT - START_HEIGHT;
+    w = START_WIDTH;
+    h = START_HEIGHT;
     _start = [[UIButton alloc] initWithFrame:CGRectMake(x, y, w, h)];
     [_start setBackgroundImage:[UIImage imageNamed:@"button_start_off.png"] forState:UIControlStateNormal];
     [_start setBackgroundImage:[UIImage imageNamed:@"button_start_on.png"] forState:UIControlStateHighlighted];
@@ -190,10 +190,10 @@ typedef struct _PADStatus PADStatus;
     [_start addTarget:self action:@selector(touchUpStart) forControlEvents:UIControlEventTouchCancel];
     [startArea addSubview:_start];
 
-    x = START_AREA_WIDTH - 64;
-    y = START_AREA_HEIGHT - 20;
-    w = 64;
-    h = 20;
+    x = 0;
+    y = START_AREA_HEIGHT - START_HEIGHT;
+    w = START_WIDTH;
+    h = START_HEIGHT;
     _select = [[UIButton alloc] initWithFrame:CGRectMake(x, y, w, h)];
     [_select setBackgroundImage:[UIImage imageNamed:@"button_select_off.png"] forState:UIControlStateNormal];
     [_select setBackgroundImage:[UIImage imageNamed:@"button_select_on.png"] forState:UIControlStateHighlighted];
